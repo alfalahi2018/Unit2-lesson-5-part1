@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Animal Action Carnival | Unit 2 Awesome Animals | Lesson 5 Part 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#26214a;--ok:#1fb25a;--bad:#e5383b;--sun:#ffd93d;--c:#ff6b6b;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;color:var(--ink);font-weight:600;padding-bottom:40px;background:linear-gradient(180deg,#fff4dc 0%,#e6f6ff 55%,#f1e8ff 100%) fixed}
+h1,h2,h3{font-family:'Baloo 2',system-ui,sans-serif;margin:0}
+header{position:relative;overflow:hidden;color:#fff;padding:16px 16px 12px;background:linear-gradient(110deg,#ff6b6b,#ffa63d,#ffd93d 35%,#4ecb71 60%,#3fa9f5 80%,#8f6bff);border-bottom:6px solid #fff}
+header h1{font-size:clamp(24px,5.5vw,38px);font-weight:800;line-height:1.1;text-shadow:2px 3px 0 #0003;position:relative}
+header small{position:relative;font-weight:800;text-shadow:1px 1px 0 #0003}
+.fl{position:absolute;font-size:34px;opacity:.9;animation:fl 4s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px) rotate(8deg)}}
+.bar{position:relative;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.pill{background:#fff;color:var(--ink);border-radius:99px;padding:5px 12px;font-weight:800;box-shadow:0 3px 0 #0002}
+select,textarea,input{font:inherit;border:3px solid var(--ink);border-radius:12px;padding:5px 8px;background:#fff;color:var(--ink)}
+.tabs button{background:#ffffff40;color:#fff;border:3px solid #fff;border-radius:99px;padding:5px 14px;font:800 15px Nunito;cursor:pointer}
+.tabs button.on{background:#fff;color:var(--ink)}
+main{max-width:920px;margin:0 auto;padding:14px}
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.st{background:var(--c);color:#fff;border:0;border-radius:20px;padding:12px;text-align:left;cursor:pointer;font:inherit;position:relative;box-shadow:0 6px 0 #0003;transition:transform .15s}
+.st:hover,.st:focus-visible{transform:translateY(-3px) rotate(-1deg);outline:4px solid #fff}
+.st .em{font-size:36px;display:block}.st b{display:block;font-family:'Baloo 2';font-size:19px;line-height:1.1;text-shadow:1px 1px 0 #0003}.st span{font-size:13px}
+.st.done::after{content:"✔";position:absolute;right:10px;top:6px;background:#fff;color:var(--ok);border-radius:50%;width:28px;height:28px;text-align:center;line-height:28px;font-size:18px}
+.st.cur{outline:4px solid var(--ink)}
+.prog{height:16px;background:#fff;border:3px solid var(--ink);border-radius:99px;margin:14px 0;overflow:hidden}.prog i{display:block;height:100%;background:linear-gradient(90deg,#ff6b6b,#ffd93d,#4ecb71,#3fa9f5,#8f6bff);width:0;transition:width .5s}
+#stage{background:#fff;border:5px solid var(--c);border-radius:26px;padding:16px;min-height:180px;box-shadow:0 8px 0 #0002}
+#stage h2{color:var(--c);font-size:28px}
+.tag{display:inline-block;background:var(--c);color:#fff;border-radius:99px;padding:2px 12px;font-size:13px;font-weight:800;margin-bottom:6px}
+.big{font-size:64px;text-align:center;line-height:1.1}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:10px;background:#fff3c4;border-radius:18px;min-height:50px;margin:8px 0;border:3px dashed #ffbf47}
+.chip{color:#fff;border-radius:99px;padding:6px 16px;font:800 18px 'Baloo 2';cursor:grab;user-select:none;box-shadow:0 3px 0 #0003}
+.chip:nth-child(5n+1){background:#ff6b6b}.chip:nth-child(5n+2){background:#ff9f1c}.chip:nth-child(5n+3){background:#2ec4b6}.chip:nth-child(5n+4){background:#3a86ff}.chip:nth-child(5n){background:#9b5de5}
+.chip.sel{outline:4px solid var(--ink);transform:scale(1.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:10px 0}
+.card{border:4px dashed #bbb;border-radius:20px;padding:6px;text-align:center;background:#fff}
+.card:nth-child(4n+1){background:#ffecec}.card:nth-child(4n+2){background:#fff4e0}.card:nth-child(4n+3){background:#e3faf7}.card:nth-child(4n){background:#eaf1ff}
+.card .e{font-size:44px;line-height:1.2}
+.slot{display:inline-block;min-width:110px;min-height:34px;border:3px dashed #999;border-radius:12px;text-align:center;font:800 17px 'Baloo 2';line-height:28px;background:#fff;padding:0 8px;vertical-align:middle}
+.slot.ok{border:3px solid var(--ok);background:#e3f6e9;color:var(--ok)}
+.row{background:#f7f3ff;border:3px solid #cdbdf5;border-radius:16px;padding:8px 12px;margin:8px 0;font-size:18px;line-height:2}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:12px 0}
+.opt,.btn{border:3px solid var(--ink);background:#fff;border-radius:16px;padding:10px;font:800 18px Nunito;cursor:pointer;color:var(--ink);box-shadow:0 4px 0 #0002}
+.opt:hover:not(:disabled){background:#fff3c4}.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.btn{background:var(--c);color:#fff;border-color:var(--c)}
+.story{background:#fff;border:3px solid #cdbdf5;border-radius:16px;padding:12px;font-size:20px;line-height:2.1;margin:10px 0}
+.w{cursor:pointer;border-radius:8px;padding:0 3px}.w:hover{background:#ffe9a8}.w.f{background:var(--ok);color:#fff}
+.no{animation:sh .4s;border-color:var(--bad)!important}@keyframes sh{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.msg{margin-top:12px;padding:12px 14px;border-radius:16px;background:#e3f6e9;border:3px solid var(--ok);font-weight:800}
+.cert{text-align:center;border:8px double var(--c);background:linear-gradient(135deg,#fff,#fff4dc);border-radius:26px;padding:20px;margin:16px 0}.cert h2{font-size:32px;color:#8f6bff}
+.boom{position:fixed;font-size:30px;pointer-events:none;animation:up 1.3s forwards;z-index:9}@keyframes up{to{transform:translateY(-240px) rotate(50deg);opacity:0}}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:15px;background:#fff}td,th{border:2px solid #cdbdf5;padding:6px 8px;text-align:left;vertical-align:top}th{background:#8f6bff;color:#fff}
+.plan{background:#fff;border-radius:22px;padding:14px;border:4px solid #8f6bff}.plan h3{color:#ff6b6b;margin:16px 0 4px;font-size:22px}.plan ul{margin:4px 0;padding-left:20px}
+footer{text-align:center;margin-top:20px;font-weight:800;color:#8f6bff}.hide{display:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<header>
+<span class="fl" style="left:4%;top:8px">🦁</span><span class="fl" style="left:30%;top:50px;animation-delay:-1s">🐝</span><span class="fl" style="right:22%;top:6px;animation-delay:-2s">🐬</span><span class="fl" style="right:5%;top:44px;animation-delay:-3s">🦔</span>
+<h1>🎪 Animal Action Carnival</h1>
+<small>Unit 2 · Awesome animals · Lesson 5 part 1 · Animal verbs and the first conditional · Grade 7 (Oman)</small>
+<div class="bar">
+<span class="pill">⭐ Score: <b id="sc">0</b></span>
+<label class="pill">Level <select id="lvl" aria-label="Choose your level"><option value="support">Support 🌱</option><option value="standard" selected>Standard 🌿</option><option value="challenge">Challenge 🌳</option></select></label>
+<span class="tabs"><button id="tG" class="on">Game</button> <button id="tT">Teacher plan</button></span>
+</div></header>
+<main>
+<section id="game">
+<p><b>Welcome to the carnival!</b> Win a ticket at every show. Play the shows in any order.</p>
+<div class="map" id="map"></div><div class="prog"><i id="pb"></i></div>
+<div id="stage"><h2>Step right up! 🎟️</h2><p>Pick a show above. 🔊 Tap a word to hear it.</p></div>
+<div id="cert"></div>
+</section>
+
+<section id="plan" class="plan hide">
+<h2>Teacher plan · 25 minutes</h2>
+<p><b>Class:</b> Grade 7 · <b>Unit 2:</b> Awesome animals · <b>Lesson 5, part 1</b> (Vocabulary and Grammar)<br>
+<b>Lesson aims:</b> to learn verbs associated with animal actions; to learn how to use the first conditional.<br>
+<b>Target language:</b> bite, sting, roar, fight, dive, dig, hide, lay eggs, curl up, fly away, run away, die.<br>
+<b>Materials:</b> Unit 2 flashcards (animal verbs), grammar animation, traffic light cards, device or projector, notebooks.</p>
+<table>
+<tr><th>Time</th><th>Stage</th><th>What happens</th><th>Teacher’s Book link</th></tr>
+<tr><td>0–4</td><td><b>Warm-up</b><br>Show 1: Fly Swat Battle</td><td>Two teams take turns. Students hear a body part word from Lesson 1 and swat it on the board. Extra point for a complete sentence (in the game: choose the animal that has the part).</td><td>“Starting the lesson”: write the Lesson 1 words on the board, two teams in a line with a fly swat each, first to swat the word gets a point, extra point for a complete sentence. For deaf/hard of hearing students: mime the word, extra point for naming an animal with the body part.</td></tr>
+<tr><td>4–11</td><td><b>Formative 1</b><br>Show 2: Look and Match</td><td>Drag the 12 verbs to the pictures. Listen, check and repeat.</td><td>Class Book Activity 1 (2.10): look and match, then listen, check and repeat.</td></tr>
+<tr><td>11–15</td><td><b>Formative 2</b><br>Show 3: Verb Hunt in the Folk Tale</td><td>Students find the verbs in the Lesson 4 folk tale and count them.</td><td>Activity 2: read the folk tale in Lesson 4 again; how many of the verbs in Activity 1 can you find?</td></tr>
+<tr><td>15–22</td><td><b>Formative 3</b><br>Show 4: If … Will!</td><td>Match the two halves of first conditional sentences, then circle the correct grammar rules. Use the Traffic light technique.</td><td>Grammar: look at the grammar table, read and circle the correct rules; first conditional (if + present simple, will + infinitive).</td></tr>
+<tr><td>22–25</td><td><b>Closing</b><br>Show 5: Garden Helpers</td><td>Students write first conditional sentences about animals. Pairs read aloud. Exit ticket.</td><td>“Finishing the lesson”: summative and thought-provoking questions technique.</td></tr>
+</table>
+<h3>Differentiation</h3>
+<ul>
+<li><b>Support 🌱:</b> first-letter hints in Look and Match, only the six words of the round on the board in Fly Swat Battle, sentence frames in Garden Helpers.</li>
+<li><b>Standard 🌿:</b> full activities.</li>
+<li><b>Challenge 🌳:</b> no hints, all twelve Lesson 1 words on the board, and three written sentences. Extra: make a sentence with <i>unless</i> or think of the result of each action.</li>
+</ul>
+<h3>Notes and keys</h3>
+<ul>
+<li>Fly Swat Battle: in class, use a real fly swat and the words on the board; the game also has a “Show a clue” button (picture instead of sound) for deaf/hard of hearing students.</li>
+<li>Verb pictures are emoji scenes chosen for the game. Compare them with the Class Book pictures (2.10) and the numbers in your Teacher’s Book (page 105–106).</li>
+<li>Verbs found in the folk tale: fighting, roared, hiding, bite, dive, lay (eggs), curled (up) = 7.</li>
+<li>Rules: if + present simple; will + infinitive; we use it for real and possible situations in the future.</li>
+<li>Deaf/hard of hearing students: use flashcards, gestures and written examples; audio is optional.</li>
+<li>Extra activities in the Teacher’s Book for this lesson: Photocopiables 2, 7 and 11.</li>
+</ul>
+</section>
+<footer>Created by T.Badria Alfalahi</footer>
+</main>
+<script>
+const $=s=>document.querySelector(s),sh=a=>[...a].sort(()=>Math.random()-.5),lvl=()=>$('#lvl').value;
+const S={score:0,done:{},cur:-1},COL=['#ff6b6b','#ff9f1c','#2ec4b6','#3a86ff','#9b5de5'];
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-GB';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function boom(){for(let i=0;i<18;i++){const b=document.createElement('span');b.className='boom';b.textContent=['⭐','🎉','🎈','🦁','🐝','🐬','🦔'][i%7];b.style.left=8+Math.random()*84+'vw';b.style.top=55+Math.random()*35+'vh';document.body.appendChild(b);setTimeout(()=>b.remove(),1400)}}
+function pts(n){S.score+=n;$('#sc').textContent=S.score}
+const ST=[{e:'🪰',t:'Fly Swat Battle',m:4,k:'Warm-up (2 teams)'},{e:'🎡',t:'Look and Match',m:7,k:'Drag and drop'},{e:'🔭',t:'Verb Hunt',m:4,k:'Find the verbs'},{e:'🎢',t:'If … Will!',m:7,k:'First conditional'},{e:'🌻',t:'Garden Helpers',m:3,k:'Closing'}];
+function drawMap(){
+$('#map').innerHTML=ST.map((s,i)=>`<button class="st ${S.done[i]?'done':''} ${S.cur==i?'cur':''}" style="--c:${COL[i]}" data-i="${i}"><span class="em">${s.e}</span><b>Show ${i+1}: ${s.t}</b><span>${s.k} · about ${s.m} min</span></button>`).join('');
+document.querySelectorAll('.st').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+const n=Object.keys(S.done).length;$('#pb').style.width=n*20+'%';
+if(n==5)$('#cert').innerHTML=`<div class="cert"><div style="font-size:54px">🏆🎪🦁🐝🐬</div><h2>Carnival Champion!</h2><p>You know the animal verbs and the first conditional.<br><b>Final score: ${S.score}</b></p><small>Created by T.Badria Alfalahi</small></div>`}
+function finish(i,x=''){
+if(!S.done[i]){S.done[i]=1;pts(20);boom()}drawMap();
+const nx=ST.findIndex((_,j)=>!S.done[j]);
+$('#stage').insertAdjacentHTML('beforeend',`<div class="msg">🎟️ You won a ticket! +20 bonus. ${x}${nx>=0?`<br><button class="btn" id="nx" style="margin-top:8px">Next: ${ST[nx].t}</button>`:'<br>All shows done! Scroll down for your certificate!'}</div>`);
+if(nx>=0)$('#nx').onclick=()=>go(nx)}
+function go(i){S.cur=i;$('#stage').style.setProperty('--c',COL[i]);drawMap();[m0,m1,m2,m3,m4][i]();$('#stage').scrollIntoView({behavior:'smooth',block:'start'})}
+const head=i=>`<span class="tag">Show ${i+1} · ${ST[i].k}</span><h2>${ST[i].t}</h2>`;
+const flash=(e,c='no')=>{e.classList.add(c);setTimeout(()=>e.classList.remove(c),450)};
+function dnd(check){
+let sel=null;
+document.querySelectorAll('.chip').forEach(c=>{c.ondragstart=e=>e.dataTransfer.setData('text',c.dataset.w);c.onclick=()=>{document.querySelectorAll('.chip.sel').forEach(x=>x.classList.remove('sel'));sel=c;c.classList.add('sel')}});
+document.querySelectorAll('.slot').forEach(s=>{s.ondragover=e=>e.preventDefault();s.ondrop=e=>{e.preventDefault();check(s,e.dataTransfer.getData('text'))};s.onclick=()=>{if(sel)check(s,sel.dataset.w)}})}
+const rm=w=>{const c=document.querySelector(`.chip[data-w="${w}"]`);if(c)c.remove()};
+const VB=[['curl up','🦔','a hedgehog'],['dig','🐇🕳️','a rabbit'],['bite','🐊🦷','a crocodile'],['fight','🐓💥🐓','two roosters'],['hide','🐱📦','a cat'],['roar','🦁📢','a lion'],['lay eggs','🐔🥚','a hen'],['sting','🐝⚡','a bee'],['fly away','🐦💨','a bird'],['dive','🐬🌊','a dolphin'],['run away','🐇💨','a rabbit'],['die','🥀','a flower']];
+
+function m0(){
+const A={beak:'🦜',hump:'🐪',whiskers:'🐱',spines:'🦔',scales:'🐟',fin:'🦈',flippers:'🐧',horns:'🐐',claws:'🦅'};
+const BAD={beak:['🐪','🐟'],hump:['🐱','🐟'],whiskers:['🐟','🦜'],spines:['🐟','🦜'],scales:['🐱','🐪'],fin:['🐪','🐱'],flippers:['🐪','🐱'],horns:['🐟','🦜'],claws:['🐟','🐋']};
+const ALL=['beak','tongue','hump','whiskers','antennae','spines','scales','fin','paws','claws','flippers','horns'];
+const L=lvl(),R=sh(Object.keys(A)).slice(0,6),ex=ALL.filter(x=>!R.includes(x));
+const B=sh(L=='support'?R:L=='challenge'?ALL:[...R,...sh(ex).slice(0,3)]);
+const TN=['🔴 Red team','🔵 Blue team'],sc=[0,0];let r=0;
+const show=()=>{
+if(r==R.length){const w=sc[0]==sc[1]?'It’s a draw!':sc[0]>sc[1]?'🔴 Red team wins!':'🔵 Blue team wins!';$('#stage').innerHTML=head(0)+`<p class="big">🏆</p><p><b>${w}</b> 🔴 ${sc[0]} · 🔵 ${sc[1]}</p>`;return finish(0,'Now say a sentence with each word: “A camel has a hump.”')}
+const w=R[r],t=r%2;
+$('#stage').innerHTML=head(0)+`<p><span class="pill" style="border:3px solid var(--ink)">🔴 Red: ${sc[0]} · 🔵 Blue: ${sc[1]}</span></p><p><b>${TN[t]}</b>, listen and swat the word! 🪰 (Round ${r+1} of ${R.length}. Play in two teams, taking turns.)</p><button class="btn" id="hr">🔊 Say the word</button> <button class="opt" id="cl">👁️ Show a clue</button><div id="clue"></div><div class="grid">${B.map(x=>`<button class="opt sw" data-w="${x}" style="font-size:20px">${x}</button>`).join('')}</div><div id="bn"></div>`;
+setTimeout(()=>say(w),300);
+$('#hr').onclick=()=>say(w);
+$('#cl').onclick=()=>{$('#clue').innerHTML=`<p class="big">${A[w]}</p><small>An animal with this body part. (Or mime the word.)</small>`};
+document.querySelectorAll('.sw').forEach(b=>b.onclick=()=>{
+if(b.dataset.w!=w){flash(b);b.disabled=true;return}
+b.classList.add('ok');b.textContent='🪰💥 '+w;document.querySelectorAll('.sw').forEach(x=>x.disabled=true);pts(5);sc[t]+=5;
+const o=sh([A[w],...BAD[w]]);
+$('#bn').innerHTML=`<div class="msg" style="background:#fff3c4;border-color:#ffbf47">⭐ Extra point! Which animal has ${/^[aeiou]/.test(w)?'an':'a'} <b>${w}</b>?<div class="opts" style="grid-template-columns:repeat(3,1fr)">${o.map(x=>`<button class="opt bo" data-c="${x==A[w]?1:0}" style="font-size:38px">${x}</button>`).join('')}</div></div>`;
+document.querySelectorAll('.bo').forEach(c=>c.onclick=()=>{if(c.dataset.c=='1'){c.classList.add('ok');document.querySelectorAll('.bo').forEach(x=>x.disabled=true);pts(5);sc[t]+=5;say('A '+w);r++;setTimeout(show,1000)}else{flash(c);c.disabled=true}})})};
+show()}
+
+function m1(){
+let left=VB.length;const L=lvl();
+$('#stage').innerHTML=head(1)+`<p>Drag each verb to its picture (or tap a verb, then a picture). Tap a finished card to hear it. 🔊</p><div class="chips">${sh(VB).map(v=>`<span class="chip" draggable="true" data-w="${v[0]}">${v[0]}</span>`).join('')}</div><div class="grid">${VB.map((v,i)=>`<div class="card"><div class="e">${v[1]}</div><small>${v[2]}</small><br><span class="slot" data-i="${i}">${L=='support'?v[0][0]+' …':''}</span></div>`).join('')}</div>`;
+dnd((s,w)=>{const i=+s.dataset.i;if(s.classList.contains('ok')){say(VB[i][0]);return}
+if(VB[i][0]==w){s.classList.add('ok');s.textContent=w;rm(w);pts(8);say(w);if(--left==0)finish(1,'Listen, check and repeat all twelve verbs!')}else flash(s)})}
+
+function m2(){
+const T='The animals were <v>fighting</v>. The lions <v>roared</v>. The platypus was <v>hiding</v>. “I can’t <v>bite</v> like you,” she said. The fish said, “We swim and <v>dive</v>.” The birds said, “We <v>lay</v> eggs.” At the end, she <v>curled</v> up and went to sleep.';
+const html=T.replace(/<v>(.*?)<\/v>/g,'<span class="w" data-v="1">$1</span>').replace(/(^|[ “])([A-Za-z’]+)(?=[ ,.”]|$)/g,(m,a,w)=>m);
+let words=html.split(/(<span class="w" data-v="1">.*?<\/span>)/).map(p=>p.startsWith('<span')?p:p.replace(/([A-Za-z’]+)/g,'<span class="w" data-v="0">$1</span>')).join('');
+let n=0;
+$('#stage').innerHTML=head(2)+`<p>Read part of the folk tale from Lesson 4. Tap every <b>animal action verb</b> from Show 2. How many can you find?</p><p><b>Found: <span id="cn">0</span></b>${lvl()=='support'?' / 7':''}</p><div class="story">${words}</div><div id="aft"></div>`;
+document.querySelectorAll('.w').forEach(w=>w.onclick=()=>{
+if(w.classList.contains('f'))return;
+if(w.dataset.v=='1'){w.classList.add('f');n++;pts(6);$('#cn').textContent=n;say(w.textContent);
+if(n==7){const o=sh([5,6,7,8]);$('#aft').innerHTML=`<p><b>How many verbs did you find?</b></p><div class="opts">${o.map(x=>`<button class="opt" data-c="${x==7?1:0}">${x}</button>`).join('')}</div>`;
+document.querySelectorAll('#aft .opt').forEach(b=>b.onclick=()=>{if(b.dataset.c=='1'){b.classList.add('ok');pts(8);document.querySelectorAll('#aft .opt').forEach(x=>x.disabled=true);finish(2,'Remember: the story has 7 animal verbs.')}else{flash(b);b.disabled=true}})}}
+else flash(w)})}
+
+function m3(){
+const H=[['If you come with us,','you’ll be with the best animals.'],['If you touch a hedgehog,','it will curl up.'],['If you plant flowers,','bees will come.'],['If you scare the bird,','it will fly away.'],['If you disturb a bee,','it will sting you.']];
+let left=H.length;
+$('#stage').innerHTML=head(3)+`<p><b>Part 1:</b> Match the two halves. Drag the result into the correct sentence.</p><div class="chips">${sh(H).map(h=>`<span class="chip" draggable="true" data-w="${h[1]}">${h[1]}</span>`).join('')}</div>${H.map((h,i)=>`<div class="row"><b style="color:#ff6b6b">${h[0]}</b> <span class="slot" style="min-width:200px" data-i="${i}">${lvl()=='support'?h[1].split(' ')[0]+' …':''}</span></div>`).join('')}<div id="p2"></div>`;
+dnd((s,w)=>{const i=+s.dataset.i;if(s.classList.contains('ok'))return;
+if(H[i][1]==w){s.classList.add('ok');s.textContent=w;rm(w);pts(8);say(H[i][0]+' '+w);if(--left==0)rules()}else flash(s)});
+function rules(){const R=[['In the <b>if</b> part we use the ___.',['present simple','past simple']],['In the result part we use ___ + infinitive.',['will','would']],['We use the first conditional for ___ situations in the future.',['real and possible','impossible']]];let q=0;
+const show=()=>{if(q==R.length){$('#p2').innerHTML='';return finish(3,'If + present simple, will + infinitive.')}
+$('#p2').innerHTML=`<h3 style="margin-top:14px;color:#3a86ff">Part 2: Circle the correct rule (${q+1}/3)</h3><div class="row">${R[q][0].replace('___','<b>_____</b>')}</div><div class="opts">${R[q][1].map((x,i)=>`<button class="opt" data-c="${i==0?1:0}">${x}</button>`).join('')}</div>`;
+document.querySelectorAll('#p2 .opt').forEach(b=>b.onclick=()=>{if(b.dataset.c=='1'){b.classList.add('ok');pts(10);document.querySelectorAll('#p2 .opt').forEach(x=>x.disabled=true);q++;setTimeout(show,900)}else{flash(b);b.disabled=true}})};show()}}
+
+function m4(){
+const L=lvl(),need=L=='challenge'?3:2,F=/\bif\b[^.!?\n]*\b(will|’ll|'ll)\b/i;
+$('#stage').innerHTML=head(4)+`<p>Small animals need a safe home in our gardens! Write ${need} sentences with <b>if</b> and <b>will</b> about helping animals.</p>${L=='support'?'<p><small>Tap a frame to add it:</small></p><div class="chips"><span class="chip" data-w="If you plant flowers, bees will come. ">If you plant flowers, bees will come.</span><span class="chip" data-w="If you put out water, birds will visit. ">If you put out water, birds will visit.</span><span class="chip" data-w="If you leave a pile of leaves, a hedgehog will curl up there. ">If you leave leaves, a hedgehog will curl up.</span></div>':''}<textarea id="tx" rows="5" style="width:100%" placeholder="If you … , … will …"></textarea><p><button class="btn" id="ck">Check my sentences</button></p><div id="fb"></div>`;
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{$('#tx').value+=c.dataset.w});
+$('#ck').onclick=()=>{const ls=$('#tx').value.split(/[.!?\n]+/).map(s=>s.trim()).filter(s=>F.test(s));
+if(ls.length>=need){pts(10*ls.length);$('#ck').remove();$('#tx').disabled=true;say(ls[0]);$('#fb').innerHTML=`<p>✅ ${ls.length} first conditional sentences! Read them to a partner.</p><p><b>Exit ticket:</b> “I can use the first conditional.”</p><div class="opts"><button class="opt" data-x>😟 Not yet</button><button class="opt" data-x>🙂 Nearly</button><button class="opt" data-x>😎 Yes!</button></div>`;
+document.querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{b.classList.add('ok');finish(4,'Great garden helpers!')})}
+else $('#fb').innerHTML=`<p>You have ${ls.length} of ${need}. Use: If + present simple, … will + verb.</p>`}}
+
+$('#lvl').onchange=()=>{if(S.cur>=0&&!S.done[S.cur])go(S.cur)};
+$('#tG').onclick=()=>{$('#game').classList.remove('hide');$('#plan').classList.add('hide');$('#tG').classList.add('on');$('#tT').classList.remove('on')};
+$('#tT').onclick=()=>{$('#plan').classList.remove('hide');$('#game').classList.add('hide');$('#tT').classList.add('on');$('#tG').classList.remove('on')};
+drawMap();
+</script></body></html>
